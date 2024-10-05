@@ -1,0 +1,57 @@
+@import url(./reset.css);
+
+
+/* estilos generales */
+.container {
+    max-width: 1200px;
+}
+
+.flex {
+    display: flex;
+}
+
+.product-image {
+    height: 100px;
+    width: 100px;
+
+}
+
+/* Header */
+
+header {
+    .container {
+        padding: 16px;
+    }
+
+    .flex {
+        justify-content: space-between;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+    }
+}
+
+/* FIN Header */
+
+/* Carrito de compra */
+
+.shopping-cart {
+    position: fixed;
+    width: 6.25rem;
+    height: 6.25rem;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    top: 2rem;
+    left: 32px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* FIN Carrito de compraa */

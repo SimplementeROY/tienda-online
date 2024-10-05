@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/data.js"></script>
 </head>
+
 <body>
+    <header>
+        <div class="container flex">
+            <!-- El titulo se va a cambiar -->
+            <h1>Titulo de la pagina</h1>
+            <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+            <div>
+                <a><i class="fa-solid fa-user"></i></a>
+                <button id="shopping-cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section id="productos-destacados" class="flex"></section>
+            <section id="productos"></section>
+        </div>
+    </main>
+    <aside class="shopping-cart hidden">
+        <h2>Tu cesta</h2>
+        <ul></ul>
+        <button>Vaciar carrito</button>
+        <button>Comprar</button>
+    </aside>
+    <footer></footer>
     <script src="./js/index.js"></script>
 </body>
+
 </html>
