@@ -1,9 +1,10 @@
 @import url(./reset.css);
-
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* estilos generales */
 .container {
     max-width: 1200px;
+    margin: 0 auto;
 }
 
 .flex {
@@ -16,25 +17,156 @@
 
 }
 
+body * {
+    font-family: "Chivo", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Libre Franklin", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+/* FIN de estilos generales */
+
 /* Header */
 
 header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
     .container {
         padding: 16px;
     }
 
-    .flex {
-        justify-content: space-between;
+    h1 {
+        font-size: 1.5rem;
+        order: 2;
     }
 
-    nav ul {
+    .hamburger {
+        cursor: pointer;
+
+        div {
+            background-color: black;
+            width: 25px;
+            height: .125rem;
+            margin: .3125rem;
+        }
+    }
+
+    .user-and-cart {
+        order: 3;
         display: flex;
+        gap: 1rem;
+
+        * {
+            font-size: 1.3rem;
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+    .flex {
         justify-content: space-between;
-        gap: 16px;
+        align-items: center;
+    }
+
+    nav {
+        display: none;
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
     }
 }
 
 /* FIN Header */
+
+/* Main */
+
+main section .container {
+    padding: 1rem;
+
+    .flex {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    /* justify-content: space-between; */
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        display: block;
+        margin: 1rem 0;
+    }
+
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-radius: .3125rem;
+        box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+        padding: 1.5rem;
+        width: 100%;
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        figure {
+            flex: 4;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            figcaption {
+                font-size: 0.9rem;
+                color: gray;
+            }
+
+            img {
+                height: 200px;
+                width: 200px;
+                margin: 0 auto;
+                object-fit: contain;
+            }
+        }
+
+        p {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+    }
+}
+
+/* Fin Main */
 
 /* Carrito de compra */
 
@@ -55,3 +187,13 @@ header {
 }
 
 /* FIN Carrito de compraa */
+
+/* Media queries */
+
+@media (min-width: 49.25rem) {
+    main section .container article {
+        width: 300px;
+    }
+}
+
+/* Fin de media queries */
