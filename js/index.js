@@ -1,5 +1,5 @@
-const sectionOfProducts = document.getElementById('section'); //No se donde esta
-const shoppingCartButton = document.getElementById('shopping-cart');
+const sectionOfProducts = document.getElementById('productos'); //No se donde esta
+const shoppingCartButton = document.getElementById('shopping-cart-btn');
 
 
 function generarHTMLProducto(producto) {
@@ -7,25 +7,37 @@ function generarHTMLProducto(producto) {
     const productName = document.createElement('h3');
     const imgFigure = document.createElement('figure');
     const productIMG = document.createElement('img');
-    const productDescription = document.createElement('figcaption')
-    const producPrice = document.createElement('p')
+    const productDescription = document.createElement('figcaption');
+    const producPrice = document.createElement('p');
     const addCartButton = document.createElement('button');
 
     //Poner texto en las etiquetas
     productName.textContent = producto.nombre;
     productDescription.textContent = producto.descripcion;
-    producPrice.textContent = `${producto.precio}€`
-    //Poner la imagen
+    producPrice.textContent = `${producto.precio}€`;
+    addCartButton.textContent = 'Agregar a la cesta'
+    //Poner atributos de la etiqueta imagen
     productIMG.setAttribute('src', producto.imagen);
     productIMG.setAttribute('alt', producto.nombre);
 
-    imgFigure.append(productIMG, productDescription);
+    //Poner clases
+    productName.classList.add('product-name');
+    producPrice.classList.add('product-price');
+    productIMG.classList.add('product-image')
+
+    imgFigure.append(productDescription, productIMG);
     productArticle.append(productName, imgFigure, producPrice, addCartButton);
 
     return productArticle
 }
 
-for (const producto of productos) {
-    generarHTMLProducto(producto)
+function toggleCart() {
+    const shoppingCart = document.querySelector('.shopping-cart');
+    shoppingCart.classList.toggle('hidden')
 }
 
+for (const producto of productos) {
+    sectionOfProducts.appendChild(generarHTMLProducto(producto))
+}
+
+shoppingCartButton.addEventListener('click', toggleCart);
