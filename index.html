@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/data.js"></script>
+    <title>Tienda de Plantas</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <script src="./js/index.js"></script>
+    <header>
+        <h1>Tienda de Plantas</h1>
+        <button id="verCarrito">Ver Carrito</button>
+    </header>
+    <main>
+        <div id="productos"></div>
+        <div id="carrito" class="oculto">
+            <h2>Carrito de Compras</h2>
+            <ul id="listaCarrito"></ul>
+            <p>Total: <span id="totalCarrito">0</span>€</p>
+            <button id="finalizarCompra">Finalizar Compra</button>
+        </div>
+    </main>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
