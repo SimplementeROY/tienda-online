@@ -139,6 +139,10 @@ header {
 
 main {
     text-align: center;
+
+    #show-more {
+        margin-bottom: 1rem;
+    }
 }
 
 main section .container {
@@ -195,6 +199,8 @@ main section .container {
             font-weight: bold;
         }
     }
+
+
 }
 
 
@@ -233,6 +239,30 @@ main section .container {
 }
 
 /* FIN Carrito de compraa */
+
+/* Footer */
+
+footer {
+    background-color: black;
+    padding: 1rem;
+
+    .container {
+        color: white;
+
+        a {
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+        }
+
+    }
+
+}
+
+/* FIN Footer */
 
 /* Media queries */
 
