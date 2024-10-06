@@ -24,6 +24,7 @@ function generarHTMLProducto(producto) {
     productName.classList.add('product-name');
     producPrice.classList.add('product-price');
     productIMG.classList.add('product-image')
+    addCartButton.classList.add('btn')
 
     imgFigure.append(productDescription, productIMG);
     productArticle.append(productName, imgFigure, producPrice, addCartButton);
