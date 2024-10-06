@@ -14,7 +14,9 @@
     <header>
         <div class="container flex">
             <!-- El titulo se va a cambiar -->
-            <h1>Titulo de la pagina</h1>
+            <a href="#">
+                <h1>Titulo de la pagina</h1>
+            </a>
             <div class="hamburger">
                 <div></div>
                 <div></div>
@@ -38,23 +40,23 @@
         <section>
             <div class="container">
                 <h2>Productos destacados</h2>
-                <div id="productos-destacados" class="flex">
+                <div id="productos-destacados" class="grid">
                 </div>
             </div>
         </section>
         <section>
             <div class="container">
                 <h2>Productos</h2>
-                <div id="productos" class="flex"></div>
+                <div id="productos" class="grid"></div>
             </div>
         </section>
-        <button id="show-more">Ver más</button>
+        <button id="show-more" class="btn">Ver más</button>
     </main>
     <aside class="shopping-cart hidden">
         <h2>Tu cesta</h2>
         <ul id="items-list"></ul>
-        <button id="clear-items-btn">Vaciar carrito</button>
-        <button id="purchase-btn">Comprar</button>
+        <button id="clear-items-btn" class="btn">Vaciar carrito</button>
+        <button id="purchase-btn" class="btn">Comprar</button>
     </aside>
     <footer></footer>
     <script src="./js/index.js"></script>
