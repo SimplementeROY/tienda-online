@@ -24,7 +24,7 @@ function crearProductos() {
             <h3>${producto.nombre}</h3>
             <p>${producto.descripcion}</p>
             <p>Precio: $${producto.precio}</p>
-            <button class="add-to-cart" data-id="${producto.id}">Añadir al carrito</button>
+            <button class="btn" data-id="${producto.id}">Añadir al carrito</button>
         `;
         contenedorProductos.appendChild(elementoProducto);
     });
@@ -53,11 +53,14 @@ function actualizarVisualizacionCarrito() {
         li.textContent = `${item.nombre} x${item.cantidad} - $${(item.precio * item.cantidad).toFixed(2)}`;
         listaCarrito.appendChild(li);
     });
+    // Actualizar el precio total
+    const total = calcularTotal();
+    document.getElementById('total-price').textContent = `Total: € ${total}`;
 }
 
 // Event listener para añadir productos al carrito
 contenedorProductos.addEventListener('click', (e) => {
-    if (e.target.classList.contains('add-to-cart')) {
+    if (e.target.classList.contains('btn')) {
         const idProducto = parseInt(e.target.getAttribute('data-id'));
         agregarAlCarrito(idProducto);
     }
@@ -77,3 +80,10 @@ botonVaciarCarrito.addEventListener('click', () => {
 
 // Inicialización
 crearProductos();
+//////////
+
+function calcularTotal() {
+    let total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+    return total.toFixed(2); // Formato a 2 decimales
+}
+
