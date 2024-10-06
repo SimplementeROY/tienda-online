@@ -1,43 +1,79 @@
-const sectionOfProducts = document.getElementById('productos'); //No se donde esta
-const shoppingCartButton = document.getElementById('shopping-cart-btn');
+// Seleccionar elementos del DOM
+const seccionDeProductos = document.getElementById('productos');
+const botonCarritoCompras = document.getElementById('shopping-cart-btn');
+const carritoCompras = document.querySelector('.shopping-cart');
+const contenedorProductos = document.getElementById('productos');
+const listaCarrito = carritoCompras.querySelector('ul');
+const botonVaciarCarrito = carritoCompras.querySelector('button:first-of-type');
+const botonComprar = carritoCompras.querySelector('button:last-of-type');
+let carrito = [];
 
+// Función para mostrar/ocultar el carrito
+botonCarritoCompras.addEventListener('click', () => {
+    carritoCompras.classList.toggle('hidden');
+});
 
-function generarHTMLProducto(producto) {
-    const productArticle = document.createElement('article');
-    const productName = document.createElement('h3');
-    const imgFigure = document.createElement('figure');
-    const productIMG = document.createElement('img');
-    const productDescription = document.createElement('figcaption');
-    const producPrice = document.createElement('p');
-    const addCartButton = document.createElement('button');
-
-    //Poner texto en las etiquetas
-    productName.textContent = producto.nombre;
-    productDescription.textContent = producto.descripcion;
-    producPrice.textContent = `${producto.precio}€`;
-    addCartButton.textContent = 'Agregar a la cesta'
-    //Poner atributos de la etiqueta imagen
-    productIMG.setAttribute('src', producto.imagen);
-    productIMG.setAttribute('alt', producto.nombre);
-
-    //Poner clases
-    productName.classList.add('product-name');
-    producPrice.classList.add('product-price');
-    productIMG.classList.add('product-image')
-
-    imgFigure.append(productDescription, productIMG);
-    productArticle.append(productName, imgFigure, producPrice, addCartButton);
-
-    return productArticle
+// Función para crear productos en HTML
+function crearProductos() {
+    contenedorProductos.innerHTML = '';
+    productos.forEach(producto => {
+        const elementoProducto = document.createElement('div');
+        elementoProducto.classList.add('product');
+        elementoProducto.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h3>${producto.nombre}</h3>
+            <p>${producto.descripcion}</p>
+            <p>Precio: $${producto.precio}</p>
+            <button class="add-to-cart" data-id="${producto.id}">Añadir al carrito</button>
+        `;
+        contenedorProductos.appendChild(elementoProducto);
+    });
 }
 
-function toggleCart() {
-    const shoppingCart = document.querySelector('.shopping-cart');
-    shoppingCart.classList.toggle('hidden')
+// Función para añadir producto al carrito
+function agregarAlCarrito(idProducto) {
+    const producto = productos.find(p => p.id === idProducto);
+    if (producto && producto.stock > 0) {
+        const itemExistente = carrito.find(item => item.id === idProducto);
+        if (itemExistente) {
+            itemExistente.cantidad++;
+        } else {
+            carrito.push({ ...producto, cantidad: 1 });
+        }
+        producto.stock--;
+        actualizarVisualizacionCarrito();
+    }
 }
 
-for (const producto of productos) {
-    sectionOfProducts.appendChild(generarHTMLProducto(producto))
+// Función para actualizar la visualización del carrito
+function actualizarVisualizacionCarrito() {
+    listaCarrito.innerHTML = '';
+    carrito.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nombre} x${item.cantidad} - $${(item.precio * item.cantidad).toFixed(2)}`;
+        listaCarrito.appendChild(li);
+    });
 }
 
-shoppingCartButton.addEventListener('click', toggleCart);
+// Event listener para añadir productos al carrito
+contenedorProductos.addEventListener('click', (e) => {
+    if (e.target.classList.contains('add-to-cart')) {
+        const idProducto = parseInt(e.target.getAttribute('data-id'));
+        agregarAlCarrito(idProducto);
+    }
+});
+
+// Función para vaciar el carrito
+botonVaciarCarrito.addEventListener('click', () => {
+    carrito.forEach(item => {
+        const producto = productos.find(p => p.id === item.id);
+        if (producto) {
+            producto.stock += item.cantidad;
+        }
+    });
+    carrito = [];
+    actualizarVisualizacionCarrito();
+});
+
+// Inicialización
+crearProductos();
