@@ -3,9 +3,9 @@ const seccionDeProductos = document.getElementById('productos');
 const botonCarritoCompras = document.getElementById('shopping-cart-btn');
 const carritoCompras = document.querySelector('.shopping-cart');
 const contenedorProductos = document.getElementById('productos');
-const listaCarrito = carritoCompras.querySelector('ul');
-const botonVaciarCarrito = carritoCompras.querySelector('button:first-of-type');
-const botonComprar = carritoCompras.querySelector('button:last-of-type');
+const listaCarrito = document.getElementById('items-list');
+const botonVaciarCarrito = document.getElementById('clear-items-btn');
+const botonComprar = document.getElementById('purchase-btn');
 let carrito = [];
 
 // Función para mostrar/ocultar el carrito
@@ -17,14 +17,16 @@ botonCarritoCompras.addEventListener('click', () => {
 function crearProductos() {
     contenedorProductos.innerHTML = '';
     productos.forEach(producto => {
-        const elementoProducto = document.createElement('div');
-        elementoProducto.classList.add('product');
+        const elementoProducto = document.createElement('article');
+        elementoProducto.classList.add('productos');
         elementoProducto.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>${producto.descripcion}</p>
-            <p>Precio: $${producto.precio}</p>
-            <button class="btn" data-id="${producto.id}">Añadir al carrito</button>
+                <h3>${producto.nombre}</h3>
+                <figure>
+                   <figcaption>${producto.descripcion}</figcaption>
+                   <img src="${producto.imagen}" alt="${producto.nombre}">
+                </figure>
+                <p>${producto.precio} €</p>
+<button         <button class="btn add-to-cart" data-id="${producto.id}">Agregar al carrito</button>
         `;
         contenedorProductos.appendChild(elementoProducto);
     });
@@ -41,7 +43,11 @@ function agregarAlCarrito(idProducto) {
             carrito.push({ ...producto, cantidad: 1 });
         }
         producto.stock--;
+
         actualizarVisualizacionCarrito();
+
+        carritoCompras.classList.remove('hidden');
+    
     }
 }
 
@@ -50,12 +56,27 @@ function actualizarVisualizacionCarrito() {
     listaCarrito.innerHTML = '';
     carrito.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.nombre} x${item.cantidad} - $${(item.precio * item.cantidad).toFixed(2)}`;
+        li.classList.add('carrito-item');
+        li.innerHTML = `
+            <p>${item.nombre}</p>
+            <p>Precio: ${(item.precio * item.cantidad).toFixed(2)} €</p>
+            <p>Cantidad: ${item.cantidad}</p>
+            <div class="item-botonesCarrito">
+                <button class="decrementar" data-id="${item.id}">-</button>
+                <button class="incrementar" data-id="${item.id}">+</button>
+                <button class="eliminar" data-id="${item.id}">Eliminar producto</button>
+            </div>
+            <hr>
+        `;
         listaCarrito.appendChild(li);
     });
-    // Actualizar el precio total
+// Actualizar el precio total
     const total = calcularTotal();
-    document.getElementById('total-price').textContent = `Total: € ${total}`;
+    document.getElementById('total-price').textContent = `Total: ${total} €`;
+
+// Agregar eventos para los botones después de actualizar el carrito
+    agregarEventosIncrementoDecremento();
+    agregarEventosEliminar();
 }
 
 // Event listener para añadir productos al carrito
@@ -80,10 +101,72 @@ botonVaciarCarrito.addEventListener('click', () => {
 
 // Inicialización
 crearProductos();
-//////////
 
+
+//Calcular total
 function calcularTotal() {
     let total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
     return total.toFixed(2); // Formato a 2 decimales
 }
 
+function agregarEventosIncrementoDecremento() {
+    // Botones de incrementar cantidad
+    document.querySelectorAll('.incrementar').forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            const idProducto = parseInt(e.target.getAttribute('data-id'));
+            incrementarCantidad(idProducto);
+        });
+    });
+
+    // Botones de disminuir cantidad
+    document.querySelectorAll('.decrementar').forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            const idProducto = parseInt(e.target.getAttribute('data-id'));
+            disminuirCantidad(idProducto);
+        });
+    });
+}
+function incrementarCantidad(idProducto) {
+    const productoEnCarrito = carrito.find(item => item.id === idProducto);
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad++;
+        actualizarVisualizacionCarrito();
+    }
+}
+
+function disminuirCantidad(idProducto) {
+    const productoEnCarrito = carrito.find(item => item.id === idProducto);
+    if (productoEnCarrito && productoEnCarrito.cantidad > 1) {
+        productoEnCarrito.cantidad--;
+    } else {
+        // Si la cantidad llega a 0, lo removemos del carrito
+        carrito = carrito.filter(item => item.id !== idProducto);
+    }
+    actualizarVisualizacionCarrito();
+}
+
+function eliminarDelCarrito(idProducto) {
+    // Eliminar el producto del carrito
+    carrito = carrito.filter(item => item.id !== idProducto);
+    actualizarVisualizacionCarrito();
+}
+function agregarEventosEliminar() {
+    // Botones de eliminar
+    document.querySelectorAll('.eliminar').forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            const idProducto = parseInt(e.target.getAttribute('data-id'));
+            eliminarDelCarrito(idProducto);
+        });
+    });
+}
+
+// Función para manejar el proceso de compra
+botonComprar.addEventListener('click', () => {
+    if (carrito.length === 0) {
+        alert('El carrito está vacío. Añade productos antes de realizar la compra.');
+    } else {
+        alert('Gracias por tu compra');
+        carrito = []; // Vaciar el carrito tras la compra
+        actualizarVisualizacionCarrito(); 
+    }
+});
