@@ -25,7 +25,7 @@ function crearProductos() {
                    <figcaption>${producto.descripcion}</figcaption>
                    <img src="${producto.imagen}" alt="${producto.nombre}">
                 </figure>
-                <p>${producto.precio} €</p>
+                <p>${producto.precio}€</p>
 <button         <button class="btn add-to-cart" data-id="${producto.id}">Agregar al carrito</button>
         `;
         contenedorProductos.appendChild(elementoProducto);
@@ -47,7 +47,7 @@ function agregarAlCarrito(idProducto) {
         actualizarVisualizacionCarrito();
 
         carritoCompras.classList.remove('hidden');
-    
+
     }
 }
 
@@ -58,23 +58,24 @@ function actualizarVisualizacionCarrito() {
         const li = document.createElement('li');
         li.classList.add('carrito-item');
         li.innerHTML = `
-            <p>${item.nombre}</p>
-            <p>Precio: ${(item.precio * item.cantidad).toFixed(2)} €</p>
-            <p>Cantidad: ${item.cantidad}</p>
-            <div class="item-botonesCarrito">
-                <button class="decrementar" data-id="${item.id}">-</button>
-                <button class="incrementar" data-id="${item.id}">+</button>
-                <button class="eliminar" data-id="${item.id}">Eliminar producto</button>
+            <div>
+                <p>${item.nombre}</p>
+                <p>${(item.precio * item.cantidad).toFixed(2)} €</p>
             </div>
-            <hr>
+            <div class="item-botonesCarrito">
+                <button class="btn decrementar" data-id="${item.id}">-</button>
+                <p>${item.cantidad}</p>
+                <button class="btn incrementar" data-id="${item.id}">+</button>
+                <button class="btn eliminar" data-id="${item.id}"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
         `;
         listaCarrito.appendChild(li);
     });
-// Actualizar el precio total
+    // Actualizar el precio total
     const total = calcularTotal();
     document.getElementById('total-price').textContent = `Total: ${total} €`;
 
-// Agregar eventos para los botones después de actualizar el carrito
+    // Agregar eventos para los botones después de actualizar el carrito
     agregarEventosIncrementoDecremento();
     agregarEventosEliminar();
 }
@@ -167,6 +168,6 @@ botonComprar.addEventListener('click', () => {
     } else {
         alert('Gracias por tu compra');
         carrito = []; // Vaciar el carrito tras la compra
-        actualizarVisualizacionCarrito(); 
+        actualizarVisualizacionCarrito();
     }
 });
