@@ -102,7 +102,7 @@ botonVaciarCarrito.addEventListener('click', () => {
 function calcularTotal() {
     return carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0).toFixed(2);
 }
-
+//Funciones agregar o quitar cantidad en el carrito
 function agregarEventosIncrementoDecremento() {
     document.querySelectorAll('.incrementar').forEach(boton => {
         boton.addEventListener('click', (e) => {
