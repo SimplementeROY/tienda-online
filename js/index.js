@@ -5,15 +5,10 @@ const carritoCompras = document.querySelector('.shopping-cart');
 const listaCarrito = document.getElementById('items-list');
 const botonVaciarCarrito = document.getElementById('clear-items-btn');
 const botonComprar = document.getElementById('purchase-btn');
-const botonCerrar = document.querySelector('.close-btn');
 let carrito = [];
 
 // Función para mostrar/ocultar el carrito
 botonCarritoCompras.addEventListener('click', () => {
-    carritoCompras.classList.toggle('hidden');
-});
-
-botonCerrar.addEventListener('click', () => {
     carritoCompras.classList.toggle('hidden');
 });
 
@@ -62,16 +57,17 @@ function actualizarVisualizacionCarrito() {
         const li = document.createElement('li');
         li.classList.add('carrito-item');
         li.innerHTML = `
-            <div>
-                <p>${item.nombre}</p>
-                <p>${(item.precio * item.cantidad).toFixed(2)} €</p>
-            </div>
+        <div>
+            <h2>${item.nombre}</h2>
+            <p>${(item.precio * item.cantidad).toFixed(2)} €</p>
+        </div>
             <div class="item-botonesCarrito">
                 <button class="btn decrementar" data-id="${item.id}">-</button>
                 <p>${item.cantidad}</p>
                 <button class="btn incrementar" data-id="${item.id}">+</button>
-                <button class="btn eliminar" data-id="${item.id}"><i class="fa-solid fa-trash-can"></i></button>
+                <button class="btn eliminar" data-id="${item.id}">Eliminar producto</button>
             </div>
+            <hr>
         `;
         listaCarrito.appendChild(li);
     });
@@ -170,8 +166,9 @@ function agregarEventosEliminar() {
     // Botones de eliminar
     document.querySelectorAll('.eliminar').forEach(boton => {
         boton.addEventListener('click', (e) => {
-            const idProducto = parseInt(e.target.getAttribute('data-id'));
-            eliminarDelCarrito(idProducto);
+            // const idProducto = parseInt(e.target.getAttribute('data-id'));
+            console.log(e.target.dataset);
+            // eliminarDelCarrito(idProducto);
         });
     });
 }
