@@ -66,7 +66,7 @@ function actualizarVisualizacionCarrito() {
                 <button class="btn decrementar" data-id="${item.id}">-</button>
                 <p>${item.cantidad}</p>
                 <button class="btn incrementar" data-id="${item.id}">+</button>
-                <button class="btn eliminar" data-id="${item.id}">Eliminar producto</button>
+                <button class="btn eliminar" data-id="${item.id}"><i class="fa-regular fa-trash-can"></i></button>
             </div>
             <hr>
         `;
