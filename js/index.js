@@ -1,7 +1,8 @@
 // Seleccionar elementos del DOM
-const contenedorProductos = document.getElementById('productos');
+const seccionDeProductos = document.getElementById('productos');
 const botonCarritoCompras = document.getElementById('shopping-cart-btn');
 const carritoCompras = document.querySelector('.shopping-cart');
+const contenedorProductos = document.getElementById('productos');
 const listaCarrito = document.getElementById('items-list');
 const botonVaciarCarrito = document.getElementById('clear-items-btn');
 const botonComprar = document.getElementById('purchase-btn');
@@ -24,8 +25,8 @@ function crearProductos() {
                    <figcaption>${producto.descripcion}</figcaption>
                    <img src="${producto.imagen}" alt="${producto.nombre}">
                 </figure>
-                <p>${producto.precio} €</p>
-               <button class="btn add-to-cart" data-id="${producto.id}">Agregar al carrito</button>
+                <p>${producto.precio}€</p>
+<button         <button class="btn add-to-cart" data-id="${producto.id}">Agregar al carrito</button>
         `;
         contenedorProductos.appendChild(elementoProducto);
     });
@@ -90,18 +91,14 @@ contenedorProductos.addEventListener('click', (e) => {
 
 // Función para vaciar el carrito
 botonVaciarCarrito.addEventListener('click', () => {
-    if (carrito.length === 0) {
-        alert('El carrito está vacío');
-    } else {
-        carrito.forEach(item => {
-            const producto = productos.find(p => p.id === item.id);
-            if (producto) {
-                producto.stock += item.cantidad;
-            }
-        });
-        carrito = [];
-        actualizarVisualizacionCarrito();
-    }
+    carrito.forEach(item => {
+        const producto = productos.find(p => p.id === item.id);
+        if (producto) {
+            producto.stock += item.cantidad;
+        }
+    });
+    carrito = [];
+    actualizarVisualizacionCarrito();
 });
 
 // Inicialización
@@ -133,18 +130,11 @@ function agregarEventosIncrementoDecremento() {
 }
 function incrementarCantidad(idProducto) {
     const productoEnCarrito = carrito.find(item => item.id === idProducto);
-    const producto = productos.find(p => p.id === idProducto);  // Buscar el producto original en el array 'productos'
-
-    // Verificar que el producto existe y tiene stock disponible
-    if (productoEnCarrito && producto.stock > 0) {
-        productoEnCarrito.cantidad++;  // Aumentar la cantidad en el carrito
-        producto.stock--;  // Reducir el stock del producto
-        actualizarVisualizacionCarrito();  // Actualizar la visualización del carrito
-    } else {
-        alert('No hay suficiente stock para este producto');
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad++;
+        actualizarVisualizacionCarrito();
     }
 }
-
 
 function disminuirCantidad(idProducto) {
     const productoEnCarrito = carrito.find(item => item.id === idProducto);
@@ -178,7 +168,7 @@ botonComprar.addEventListener('click', () => {
     if (carrito.length === 0) {
         alert('El carrito está vacío. Añade productos antes de realizar la compra.');
     } else {
-        alert('¡Gracias por tu compra!');
+        alert('Gracias por tu compra');
         carrito = []; // Vaciar el carrito tras la compra
         actualizarVisualizacionCarrito();
     }
