@@ -210,7 +210,7 @@ main section .container {
 
 .shopping-cart {
     position: fixed;
-    width: 200px;
+    width: 300px;
     /* height: 6.25rem; */
     background-color: white;
     border-radius: 5px;
@@ -236,6 +236,12 @@ main section .container {
 
 .hidden {
     display: none;
+}
+
+#total-price {
+    font-weight: bold; /* Para que el texto esté en negrita */
+    font-size: 1.5em; /* Aumenta el tamaño de la fuente */
+  
 }
 
 /* FIN Carrito de compraa */
@@ -355,6 +361,7 @@ hr {
 button.eliminar:hover {
     color: tomato;
 }
+
 
 
 
