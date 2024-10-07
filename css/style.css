@@ -208,6 +208,8 @@ main section .container {
 
 /* Carrito de compra */
 
+
+
 .shopping-cart {
     position: fixed;
     width: 300px;
@@ -218,25 +220,28 @@ main section .container {
     box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
     padding: 1rem;
     top: 2rem;
-    left: 32px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    transform: translateX(-100%);
+    /* Empieza fuera de la pantalla */
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
 
-    h2 {
-        font-size: 1.4rem;
-        font-weight: bold;
-    }
-
-    button {
-        font-size: 1rem;
-        padding: 0.5rem;
-    }
-
+        h2 {
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+        
+            button {
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
 }
 
-.hidden {
-    display: none;
+.shopping-cart.open {
+    transform: translateX(0);
+    /* Cuando está abierto, vuelve a su lugar */
 }
 
 /*Estilo dentro del carrito*/
