@@ -248,15 +248,22 @@ main section .container {
     gap: 10px;
 }
 
+#total-container {
+    position: sticky;
+    height: auto;
+    bottom: 0px;
+    background-color: white;
+    padding: 1.5rem;
+    z-index: 1000;
+    text-align: center;
+    line-height: 40px;
+    
+}
 .botonesCarrito button{
     color: white;
     background-color: black;
 }
 
-#total-container {
-    position: sticky;
-    
-}
 #total-price {
     font-weight: bold; /* Para que el texto esté en negrita */
     font-size: 1.5em; /* Aumenta el tamaño de la fuente */
