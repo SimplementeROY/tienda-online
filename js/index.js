@@ -6,10 +6,15 @@ const contenedorProductos = document.getElementById('productos');
 const listaCarrito = document.getElementById('items-list');
 const botonVaciarCarrito = document.getElementById('clear-items-btn');
 const botonComprar = document.getElementById('purchase-btn');
+const botonCerrar = document.querySelector('.close-btn');
 let carrito = [];
 
 // Función para mostrar/ocultar el carrito
 botonCarritoCompras.addEventListener('click', () => {
+    carritoCompras.classList.toggle('hidden');
+});
+
+botonCerrar.addEventListener('click', () => {
     carritoCompras.classList.toggle('hidden');
 });
 
