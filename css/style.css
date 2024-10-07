@@ -211,7 +211,8 @@ main section .container {
 .shopping-cart {
     position: fixed;
     width: 300px;
-    /* height: 6.25rem; */
+    height: 500px;
+    overflow-y: auto;
     background-color: white;
     border-radius: 5px;
     box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
@@ -238,11 +239,58 @@ main section .container {
     display: none;
 }
 
+/*Estilo dentro del carrito*/
+
+.carrito-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.botonesCarrito button{
+    color: white;
+    background-color: black;
+}
+
+#total-container {
+    position: sticky;
+    
+}
 #total-price {
     font-weight: bold; /* Para que el texto esté en negrita */
     font-size: 1.5em; /* Aumenta el tamaño de la fuente */
-  
 }
+
+/* Estilo para los botones de incrementar y decrementar */
+button.incrementar, button.decrementar {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Cambia el color al pasar el cursor por encima */
+button.incrementar:hover, button.decrementar:hover {
+    background-color: #432424;
+}
+
+/* Estilo para la línea entre productos */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd; 
+    margin: 10px 0; 
+}
+
+button.eliminar:hover {
+    color: tomato;
+}
+
 
 /* FIN Carrito de compraa */
 
@@ -318,52 +366,6 @@ footer {
         }
     }
 }
-
-/*Estilo dentro del carrito*/
-
-.carrito-item {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
-}
-
-.item-botonesCarrito {
-    display: flex;
-    gap: 5px;
-}
-
-/* Estilo para los botones de incrementar y decrementar */
-button.incrementar, button.decrementar {
-    background-color: #000000;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* Cambia el color al pasar el cursor por encima */
-button.incrementar:hover, button.decrementar:hover {
-    background-color: #432424;
-}
-
-/* Estilo para la línea entre productos */
-hr {
-    border: 0;
-    height: 1px;
-    background-color: #ddd; 
-    margin: 10px 0; 
-}
-
-button.eliminar:hover {
-    color: tomato;
-}
-
-
-
 
 @media (min-width: 67.25rem) {
     main section .container {

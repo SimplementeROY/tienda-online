@@ -89,6 +89,9 @@ contenedorProductos.addEventListener('click', (e) => {
 
 // Función para vaciar el carrito
 botonVaciarCarrito.addEventListener('click', () => {
+    if(carrito.length === 0){
+        alert('El carrito está vacío');
+    }else {
     carrito.forEach(item => {
         const producto = productos.find(p => p.id === item.id);
         if (producto) {
@@ -97,6 +100,7 @@ botonVaciarCarrito.addEventListener('click', () => {
     });
     carrito = [];
     actualizarVisualizacionCarrito();
+}
 });
 
 // Inicialización
@@ -118,7 +122,7 @@ function agregarEventosIncrementoDecremento() {
         });
     });
 
-    // Botones de disminuir cantidad
+ // Botones de disminuir cantidad
     document.querySelectorAll('.decrementar').forEach(boton => {
         boton.addEventListener('click', (e) => {
             const idProducto = parseInt(e.target.getAttribute('data-id'));
