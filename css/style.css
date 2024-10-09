@@ -227,7 +227,6 @@ main section .container {
     flex-direction: column;
     gap: 8px;
     transform: translateX(100vw);
-    /* Empieza fuera de la pantalla */
     transition: transform 0.5s ease-in-out;
     z-index: 1000;
 
@@ -262,7 +261,7 @@ main section .container {
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-        padding: 0.5rem 0;
+        padding: .5rem 0;
 
         div:first-child {
             flex-direction: column;
@@ -278,7 +277,7 @@ main section .container {
     }
 
     #total-price {
-        margin: 0.5rem 0;
+        margin: .5rem 0;
     }
 
     button {
@@ -298,7 +297,6 @@ main section .container {
 
 .shopping-cart.open {
     transform: translateX(0);
-    /* Cuando está abierto, vuelve a su lugar */
 }
 
 /* FIN Carrito de compraa */
@@ -331,6 +329,14 @@ footer {
 
 @media (min-width: 45.125rem) {
 
+    main section .container {
+        .grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (min-width: 860px) {
     header {
         .hamburger {
             display: none;
@@ -366,12 +372,6 @@ footer {
                     background-color: #f6f6f6;
                 }
             }
-        }
-    }
-
-    main section .container {
-        .grid {
-            grid-template-columns: repeat(2, 1fr);
         }
     }
 }
