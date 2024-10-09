@@ -48,7 +48,7 @@ button {
 
     background-color: black;
     color: white;
-    padding: 0.8rem;
+    padding: .8rem;
     border-radius: 5px;
     text-align: center;
 
@@ -74,11 +74,12 @@ header {
 
     a {
         color: black;
+        order: 2;
 
         h1 {
             font-size: 1.5rem;
             font-weight: bold;
-            order: 2;
+
         }
 
         &:active {
@@ -93,6 +94,7 @@ header {
 
     .hamburger {
         cursor: pointer;
+        order: 1;
 
         div {
             background-color: black;
@@ -165,7 +167,7 @@ main section .container {
     article {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: .5rem;
         border-radius: .3125rem;
         box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
         padding: 1.5rem;
@@ -182,7 +184,7 @@ main section .container {
             gap: 1.5rem;
 
             figcaption {
-                font-size: 0.9rem;
+                font-size: .9rem;
                 color: gray;
             }
 
@@ -212,31 +214,86 @@ main section .container {
 
 .shopping-cart {
     position: fixed;
-    width: 300px;
-    height: 500px;
+    width: 18.75rem;
+    max-height: 31.25rem;
     overflow-y: auto;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    top: 2rem;
+    right: 1rem;
+    top: 4rem;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    transform: translateX(-100%);
+    transform: translateX(100vw);
     /* Empieza fuera de la pantalla */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     z-index: 1000;
 
+    div:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
         h2 {
-                font-size: 1.4rem;
-                font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        i {
+            cursor: pointer;
+            padding: .5rem;
+            border-radius: .3125rem;
+
+            &:hover {
+                background-color: #f6f6f6;
+
             }
-        
-            button {
-                font-size: 1rem;
-                padding: 0.5rem;
-            }
+        }
+    }
+
+    #items-list {
+        max-height: 15.625rem;
+        overflow-y: scroll;
+    }
+
+    .carrito-item {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 0.5rem 0;
+
+        div:first-child {
+            flex-direction: column;
+            justify-content: left;
+            align-items: start;
+        }
+
+        .item-botonesCarrito {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+        }
+    }
+
+    #total-price {
+        margin: 0.5rem 0;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: .5rem;
+    }
+
+    .botonesCarrito {
+        display: flex;
+        gap: 1rem;
+
+        * {
+            flex: 1;
+        }
+    }
 }
 
 .shopping-cart.open {
@@ -296,7 +353,7 @@ footer {
 
             * {
                 font-size: 1.3rem;
-                padding: 0.5rem 0.3rem;
+                padding: .5rem .3rem;
                 border-radius: 7px;
 
                 span {
@@ -319,11 +376,16 @@ footer {
     }
 }
 
-@media (min-width: 67.25rem) {
+@media (min-width: 79.6875rem) {
     main section .container {
         .grid {
             grid-template-columns: repeat(3, 1fr);
         }
+    }
+
+    .shopping-cart {
+        top: 6rem;
+        right: calc((100vw - 1200px) / 2 - .5rem);
     }
 }
 
