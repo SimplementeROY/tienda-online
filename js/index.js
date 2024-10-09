@@ -5,6 +5,8 @@ const carritoCompras = document.querySelector('.shopping-cart');
 const listaCarrito = document.getElementById('items-list');
 const botonVaciarCarrito = document.getElementById('clear-items-btn');
 const botonComprar = document.getElementById('purchase-btn');
+const botonShowmore = document.getElementById('show-more');
+let productosMostrados = 30; 
 let carrito = [];
 
 // Mostrar/ocultar el carrito al hacer clic en el botón del carrito
@@ -16,7 +18,7 @@ botonCarritoCompras.addEventListener('click', () => {
 // Función para crear productos en HTML
 function crearProductos() {
     contenedorProductos.innerHTML = '';
-    productos.forEach(producto => {
+    productos.slice(0, productosMostrados).forEach(producto => {
         const elementoProducto = document.createElement('article');
         elementoProducto.classList.add('productos');
         elementoProducto.innerHTML = `
@@ -31,6 +33,20 @@ function crearProductos() {
         contenedorProductos.appendChild(elementoProducto);
     });
 }
+
+// Función para mostrar los 20 productos restantes
+function mostrarMasProductos() {
+    productosMostrados += 20; // Incrementar el número de productos a mostrar
+    crearProductos();  // Actualizar la visualización de productos
+    // Ocultar el botón "Mostrar más" si ya se han mostrado todos los productos
+    if (productosMostrados >= productos.length) {
+            botonShowmore.style.display = 'none';
+    }
+        
+}
+
+// Event listener para el botón "Mostrar más"
+botonShowmore.addEventListener('click', mostrarMasProductos);
 
 // Función para añadir producto al carrito
 function agregarAlCarrito(idProducto) {
