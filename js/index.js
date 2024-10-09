@@ -1,19 +1,23 @@
 // Seleccionar elementos del DOM
-const contenedorProductos = document.getElementById('productos');
+const seccionDeProductos = document.getElementById('productos');
 const botonCarritoCompras = document.getElementById('shopping-cart-btn');
 const carritoCompras = document.querySelector('.shopping-cart');
+const contenedorProductos = document.getElementById('productos');
 const listaCarrito = document.getElementById('items-list');
 const botonVaciarCarrito = document.getElementById('clear-items-btn');
 const botonComprar = document.getElementById('purchase-btn');
 const botonShowmore = document.getElementById('show-more');
 let productosMostrados = 30; 
+const botonCerrar = document.getElementById('close-btn');
 let carrito = [];
 
 // Mostrar/ocultar el carrito al hacer clic en el botón del carrito
-botonCarritoCompras.addEventListener('click', () => {
-    carritoCompras.classList.toggle('open');
-});
+botonCarritoCompras.addEventListener('click', cerrarCarrito);
+botonCerrar.addEventListener('click', cerrarCarrito)
 
+function cerrarCarrito() {
+    carritoCompras.classList.toggle('open');
+}
 
 // Función para crear productos en HTML
 function crearProductos() {
@@ -71,21 +75,21 @@ function actualizarVisualizacionCarrito() {
         const li = document.createElement('li');
         li.classList.add('carrito-item');
         li.innerHTML = `
-            <h2>${item.nombre}</h2>
-            <p>Precio unitario: ${item.precio.toFixed(2)} €</p>
-            <p>Cantidad: ${item.cantidad}</p>
-            <p>Total: ${(item.precio * item.cantidad).toFixed(2)} €</p>
-            <div class="item-botonesCarrito">
-                <button class="decrementar" data-id="${item.id}">-</button>
-                <button class="incrementar" data-id="${item.id}">+</button>
-                <button class="eliminar" data-id="${item.id}">Eliminar producto</button>
+            <div>
+                <p>${item.nombre}</p>
+                <p>${item.precio.toFixed(2)}€</p>
             </div>
-            <hr>
+            <div class="item-botonesCarrito">
+                <button class="decrementar btn" data-id="${item.id}">-</button>
+                <p>${item.cantidad}</p>
+                <button class="incrementar btn" data-id="${item.id}">+</button>
+                <button class="eliminar btn" data-id="${item.id}"><i data-id="${item.id}" class="fa-regular fa-trash-can"></i></button>
+            </div>
         `;
         listaCarrito.appendChild(li);
     });
     const total = calcularTotal();
-    document.getElementById('total-price').textContent = `Total: ${total} €`;
+    document.getElementById('total-price').textContent = `Total: ${total}€`;
     agregarEventosIncrementoDecremento();
     agregarEventosEliminar();
 }
