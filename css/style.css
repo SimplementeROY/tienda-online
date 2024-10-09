@@ -210,8 +210,6 @@ main section .container {
 
 /* Carrito de compra */
 
-
-
 .shopping-cart {
     position: fixed;
     width: 18.75rem;
@@ -339,7 +337,7 @@ footer {
     }
 }
 
-@media (min-width: 860px) {
+@media (min-width: 958px) {
     header {
         .hamburger {
             display: none;
