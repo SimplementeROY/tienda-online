@@ -160,9 +160,8 @@ function eliminarDelCarrito(idProducto) {
 function agregarEventosEliminar() {
     document.querySelectorAll('.eliminar').forEach(boton => {
         boton.addEventListener('click', (e) => {
-            // const idProducto = parseInt(e.target.getAttribute('data-id'));
-            console.log(e.target.dataset);
-            // eliminarDelCarrito(idProducto);
+            const idProducto = parseInt(e.target.getAttribute('data-id'));
+            eliminarDelCarrito(idProducto);
         });
     });
 }
