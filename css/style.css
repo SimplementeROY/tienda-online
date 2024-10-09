@@ -318,26 +318,6 @@ ul {
     }
 }
 
-/* 
-    button {
-        font-size: 1rem;
-        padding: .5rem;
-    }
-
-    .botonesCarrito {
-        display: flex;
-        gap: 1rem;
-
-        * {
-            flex: 1;
-        }
-    }
-}
-
-.shopping-cart.open {
-    transform: translateX(0);
-    /* Cuando está abierto, vuelve a su lugar */
-}
 
 /* FIN Carrito de compra */
 
