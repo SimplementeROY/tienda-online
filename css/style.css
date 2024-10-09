@@ -227,7 +227,7 @@ main section .container {
     flex-direction: column;
     gap: 8px;
     transform: translateX(100vw);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.4s ease-in-out;
     z-index: 1000;
 
     div:first-child {
@@ -273,15 +273,19 @@ main section .container {
             display: flex;
             gap: .5rem;
             align-items: center;
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: .5rem;
+                height: .5rem;
+            }
         }
     }
 
     #total-price {
         margin: .5rem 0;
-    }
-
-    i {
-        padding: .5rem;
     }
 
     .botonesCarrito {
