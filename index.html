@@ -52,17 +52,23 @@
         </section>
         <button id="show-more" class="btn">Ver más</button>
     </main>
-    <aside class="shopping-cart hidden">
+    <aside class="shopping-cart">
         <div class="flex">
-            <h2>Tu cesta</h2>
-            <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div>
+                <h2>Tu cesta</h2>
+                <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <button id="close-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
+
         <ul id="items-list"></ul>
-        <p id="total-price"></p>
-
-        <button class="btn" id="clear-items-btn">Vaciar Carrito</button>
-        <button class="btn" id="purchase-btn">Comprar</button>
-
+        <div id="total-container">
+            <div id="total-price">Total: 0.00€</div>
+            <div class="botonesCarrito">
+                <button class="btn" id="clear-items-btn">Vaciar Carrito</button>
+                <button class="btn" id="purchase-btn">Comprar</button>
+            </div>
+        </div>
     </aside>
     <footer>
         <div class="container">
