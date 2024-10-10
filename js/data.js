@@ -1,3 +1,4 @@
+//Array para almacenar los productos y luego generarlos con JavaScript
 const productos = [
     {
         id: 1,

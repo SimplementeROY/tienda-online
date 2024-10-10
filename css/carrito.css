@@ -43,6 +43,7 @@
     #items-list {
         max-height: 15.625rem;
         overflow-y: scroll;
+        margin: 15px;
     }
 
     .carrito-item {
@@ -74,6 +75,7 @@
 
     #total-price {
         margin: .5rem 0;
+        font-weight: bold;
     }
 
     .botonesCarrito {
