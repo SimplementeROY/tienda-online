@@ -7,9 +7,19 @@ const listaCarrito = document.getElementById('items-list');
 const botonVaciarCarrito = document.getElementById('clear-items-btn');
 const botonComprar = document.getElementById('purchase-btn');
 const botonShowmore = document.getElementById('show-more');
-let productosMostrados = 30; 
-const botonCerrar = document.getElementById('close-btn');
+let productosMostrados = 30;
+const botonCerrar = document.getElementById('close-cart-btn');
 let carrito = [];
+const hamburger = document.querySelector('.hamburger');
+const overlay = document.getElementById('overlay')
+const closeSidebarButton = document.querySelector('.close-sidebar-btn')
+
+//Mostrar el sidebar al hacer click a la hamburguesa
+hamburger.addEventListener('click', openMenu);
+
+//Ocultar el sidebar al hacer click afuera o a la cruz
+overlay.addEventListener('click', closeMenu);
+closeSidebarButton.addEventListener('click', closeMenu);
 
 // Mostrar/ocultar el carrito al hacer clic en el botón del carrito
 botonCarritoCompras.addEventListener('click', cerrarCarrito);
@@ -44,9 +54,9 @@ function mostrarMasProductos() {
     crearProductos();  // Actualizar la visualización de productos
     // Ocultar el botón "Mostrar más" si ya se han mostrado todos los productos
     if (productosMostrados >= productos.length) {
-            botonShowmore.style.display = 'none';
+        botonShowmore.style.display = 'none';
     }
-        
+
 }
 
 // Event listener para el botón "Mostrar más"
@@ -192,6 +202,21 @@ botonComprar.addEventListener('click', () => {
         actualizarVisualizacionCarrito();
     }
 });
+
+//Funciones para abrir y cerrar el sidebar
+function openMenu() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    sidebar.style.width = "250px";
+    overlay.style.display = "block";
+}
+
+function closeMenu() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    sidebar.style.width = "0";
+    overlay.style.display = "none";
+}
 
 // Inicialización
 crearProductos();
