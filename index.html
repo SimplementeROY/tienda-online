@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="container flex">
-            <!-- El titulo se va a cambiar -->
+            <!-- El título se va a cambiar -->
             <a href="#">
                 <h1>Tienda tecnología FranRoy</h1>
             </a>
@@ -31,18 +31,26 @@
                 </ul>
             </nav>
             <div class="user-and-cart">
-                <a><i class="fa-solid fa-user"><span> Mi cuenta</span></i></a>
+                <a href="#"><i class="fa-solid fa-user"><span> Mi cuenta</span></i></a>
                 <button id="shopping-cart-btn"><i class="fa-solid fa-cart-shopping"></i><span> Mi cesta</span></button>
             </div>
         </div>
     </header>
+
+    <!-- Sidebar de Navegación -->
+    <nav id="sidebar" class="sidebar">
+        <button class="close-sidebar-btn">&times;</button>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </nav>
+
+
+    <!-- Overlay para cerrar el sidebar al hacer clic fuera -->
+    <div id="overlay" class="overlay"></div>
+
     <main>
-        <section>
-            <div class="container">
-                <h2>Productos destacados</h2>
-                <div id="productos-destacados" class="grid">
-                </div>
-            </div>
         </section>
         <section>
             <div class="container">
@@ -55,12 +63,11 @@
     <aside class="shopping-cart">
         <div class="flex">
             <h2>Tu cesta</h2>
-            <button id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <button id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
-
         <ul id="items-list"></ul>
         <div id="total-container">
-            <div id="total-price">Total: 0.00€</div>
+            <p id="total-price">Total: 0.00€</p>
             <div class="botonesCarrito">
                 <button class="btn" id="clear-items-btn">Vaciar Carrito</button>
                 <button class="btn" id="purchase-btn">Comprar</button>
@@ -69,7 +76,7 @@
     </aside>
     <footer>
         <div class="container">
-            <p>Copyright&copy;2020 - <a href="">Aviso Leval</a> - <a href="">Cookies</a></p>
+            <p>Copyright&copy;2020 - <a href="">Aviso Legal</a> - <a href="">Cookies</a></p>
         </div>
     </footer>
     <script src="./js/index.js"></script>
