@@ -212,7 +212,7 @@ main section .container {
 
 .shopping-cart {
     position: fixed;
-    width: 18.75rem;
+    width: 21.875rem;
     max-height: 31.25rem;
     overflow-y: auto;
     background-color: white;
@@ -226,7 +226,7 @@ main section .container {
     gap: 8px;
     transform: translateX(100vw);
     transition: transform 0.4s ease-in-out;
-    z-index: 1000;
+    z-index: 1;
 
     div:first-child {
         display: flex;
@@ -326,6 +326,60 @@ footer {
 
 /* FIN Footer */
 
+/* Sidebar */
+
+.sidebar {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 3.75rem;
+    z-index: 3;
+
+    a {
+        padding: .625rem .9375rem;
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: white;
+        display: block;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: #575757;
+            border-radius: .3125rem;
+        }
+    }
+
+    .close-sidebar-btn {
+        position: absolute;
+        top: .625rem;
+        right: 1.5rem;
+        font-size: 2.25rem;
+        color: white;
+    }
+}
+
+/* FIN Sidebar */
+
+/* Overlay */
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/* FIN Overlay */
+
 /* Media queries */
 
 @media (min-width: 53.125rem) {
@@ -356,7 +410,7 @@ footer {
         .user-and-cart {
             order: 3;
             display: flex;
-            gap: 16px;
+            gap: 1rem;
 
 
             * {
