@@ -1,0 +1,66 @@
+/* Media queries */
+
+@media (min-width: 53.125rem) {
+
+    main section .container {
+        .grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (min-width: 958px) {
+    header {
+        .hamburger {
+            display: none;
+        }
+
+        nav {
+            display: block;
+            order: 2;
+
+            ul li a {
+                color: black;
+                font-size: 19.2px;
+            }
+        }
+
+        .user-and-cart {
+            order: 3;
+            display: flex;
+            gap: 1rem;
+
+
+            * {
+                font-size: 1.3rem;
+                padding: .5rem .3rem;
+                border-radius: 7px;
+
+                span {
+                    font-size: 19.2px;
+                    display: inline;
+                    font-weight: 400;
+                }
+
+                &:hover {
+                    background-color: #f6f6f6;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 79.6875rem) {
+    main section .container {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .shopping-cart {
+        top: 6rem;
+        right: calc((100vw - 1200px) / 2 - .5rem);
+    }
+}
+
+/* Fin de media queries */

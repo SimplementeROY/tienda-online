@@ -1,0 +1,93 @@
+/* Carrito de compra */
+
+.shopping-cart {
+    position: fixed;
+    width: 21.875rem;
+    max-height: 31.25rem;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0rem 0rem .1875rem .0625rem rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    right: 1rem;
+    top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transform: translateX(100vw);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1;
+
+    div:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        i {
+            cursor: pointer;
+            padding: .5rem;
+            border-radius: .3125rem;
+
+            &:hover {
+                background-color: #f6f6f6;
+
+            }
+        }
+    }
+
+    #items-list {
+        max-height: 15.625rem;
+        overflow-y: scroll;
+    }
+
+    .carrito-item {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding: .5rem 0;
+
+        div:first-child {
+            flex-direction: column;
+            justify-content: left;
+            align-items: start;
+        }
+
+        .item-botonesCarrito {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: .5rem;
+                height: .5rem;
+            }
+        }
+    }
+
+    #total-price {
+        margin: .5rem 0;
+    }
+
+    .botonesCarrito {
+        display: flex;
+        gap: 1rem;
+
+        * {
+            flex: 1;
+        }
+    }
+}
+
+.shopping-cart.open {
+    transform: translateX(0);
+}
+
+/* FIN Carrito de compra */
